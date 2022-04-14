@@ -14,8 +14,11 @@ class BookrAdmin(admin.AdminSite):
 
     def get_urls(self):
         urls = super().get_urls()
-        urlpatterns = [path("admin_profile/", self.admin_view(self.profile_view))]
-        return urls + urlpatterns
+        my_urls = [
+            path('admin_profile/', self.admin_view(self.profile_view))
+        ]
+        urls = my_urls + urls
+        return urls
 
     def profile_view(self, request):
         request.current_app = self.name
@@ -24,6 +27,8 @@ class BookrAdmin(admin.AdminSite):
 
 # admin_site = BookrAdmin(name='bookr_admin')
 # admin_site.register(User)
+
+
 
 
 
