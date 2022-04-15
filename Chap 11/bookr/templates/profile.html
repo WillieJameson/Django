@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load profile_tags %}
+{% block title %}
+Bookr
+{% endblock %}
+{% block heading %}Profile{% endblock %}
+
+{% block content %}
+<h2>Profile</h2>
+<div>
+  <ul>
+    <li>Username: {{ request.user.username }} </li>
+    <li>Name: {{ request.user.first_name }} {{ request.user.last_name}} </li>
+    <li>Date Joined: {{ request.user.date_joined }} </li>
+    <li>Email: {{ request.user.email }}</li>
+    <li>Last Login: {{ request.user.last_login }}</li>
+  </ul>
+  {% book_list request.user.username %}
+</div>
+{% endblock %}
